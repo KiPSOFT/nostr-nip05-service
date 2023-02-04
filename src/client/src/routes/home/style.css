@@ -1,0 +1,7 @@
+.home {
+    margin-top: 3.5rem;
+}
+
+.home > ul {
+    list-style-type: decimal;
+}

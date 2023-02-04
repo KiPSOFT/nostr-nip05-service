@@ -1,0 +1,10 @@
+:root {
+	font-family: 'Helvetica Neue', arial, sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	color-scheme: light dark;
+	color: #444;
+	background: #fafafa;
+}

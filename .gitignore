@@ -1,0 +1,6 @@
+.DS_Store
+.vscode
+src/client/node_modules
+src/server/.env
+src/client/.env
+src/client/build

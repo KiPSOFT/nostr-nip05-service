@@ -1,0 +1,10 @@
+{
+  "name": "Get a NIP-05 identifier",
+  "short_name": "NIP-05",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff",
+  "theme_color": "#673ab8",
+  "icons": []
+}

@@ -1,0 +1,88 @@
+.register {
+    margin-top: 3.5rem;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.page {
+    width: 750px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+form {
+  margin-top: 58px;
+  padding: 64px;
+  
+  background: #E5E5E5;
+  border-radius: 20px 20px 20px 20px;
+  min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.inputWrapper input{
+    height: 56px;
+  
+    background: #FAFAFC;
+  
+    border: 1px solid #E6E6F0;
+    border-radius: 8px;
+  
+    margin-bottom: 20px;
+    color: black;
+    font-size: 21px;
+}
+
+.inputWrapper label {
+    font-size: 18px;  
+    line-height: 24px;
+  
+     color: #4E4958;
+  
+     padding-bottom: 8px; 
+}
+
+.inputWrapper button {
+    margin: auto;
+    width: 40%;
+    font-size: 20px;
+    line-height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    margin: 52px auto;
+    background: #FF5374;
+    color:#FFFFFF ;
+    border: none;
+    border-radius: 20px;
+    width: 600px;
+    height:57px;
+    cursor: pointer;
+}
+
+.inputWrapper button:hover {
+    background: #cf3e5b;
+}
+
+.error {
+    color: #cf3e5b;
+}
+
+.textarea {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    width:100%;
+    margin: 10px;
+}
