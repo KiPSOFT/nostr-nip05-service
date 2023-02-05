@@ -26,7 +26,7 @@ router.get("/.well-known/nostr.json", async({request, response }: { request: any
   const users = await db.getVerifiedUsers(name);
   const temp: any = {};
   for (const usr of users) {
-    temp[usr.name] = nostr.getKeyFromNip19(usr.publicKey);
+    temp[usr.name] = usr.publicKey.substring(0, 4) === 'npub' ? nostr.getKeyFromNip19(usr.publicKey) : usr.publicKey;
   }
   response.status = 200;
   response.body = {
@@ -45,7 +45,7 @@ router.post('/api/register', async ({request, response}) => {
           createdAt: new Date(),
           email: data.email,
           name: data.name,
-          publicKey: data.publicKey,
+          publicKey: data.publicKey.substring(0, 4) === 'npub' ? nostr.getKeyFromNip19(data.publicKey) : data.publicKey,
           verified: false
         });
         response.status = 200;

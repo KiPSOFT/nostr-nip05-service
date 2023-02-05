@@ -44,8 +44,7 @@ export default class NostrCheck extends Nostr {
         const filter = { kinds: [1], since, '#p': [Deno.env.get('PUBLIC_KEY')] };
         const events = await this.filter(filter).collect();
         for (const evnt of events) {
-            const key = this.getNip19FromKey(evnt.pubkey);
-            const usr = await this.db.checkUser(key);
+            const usr = await this.db.checkUser(evnt.pubkey);
             if (usr && evnt.content === 'Please approve my NIP-05 request on nostprotocol.net #[0]') {
                 await this.verifyUser(evnt.pubkey, usr);
                 console.log(`${usr.name} request is approved.`);
