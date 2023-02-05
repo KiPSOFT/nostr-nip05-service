@@ -26,7 +26,7 @@ router.get("/.well-known/nostr.json", async({request, response }: { request: any
   const users = await db.getVerifiedUsers(name);
   const temp: any = {};
   for (const usr of users) {
-    temp[usr.name] = nostr.getKeyFromNip19(usr.publicKey);
+    temp[usr.name] = usr.publicKey;
   }
   response.status = 200;
   response.body = {
