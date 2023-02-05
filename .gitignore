@@ -1,5 +1,5 @@
 .DS_Store
-.vscode/
+.vscode
 src/client/node_modules
 src/server/.env
 src/client/.env

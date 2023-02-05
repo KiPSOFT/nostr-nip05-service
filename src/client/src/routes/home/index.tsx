@@ -29,7 +29,7 @@ const Home = () => {
 			</ul>
 			<h1>Contact</h1>
 			<p>
-			If you have any questions, you can send an email to <a href="mailto:nip05@nostrprotocol.net">nip05@nostrprotocol.net</a> or 
+			If you have any qu	estions, you can send an email to <a href="mailto:nip05@nostrprotocol.net">nip05@nostrprotocol.net</a> or 
 			send a message through nostr.</p>
 		</div>
 	);
