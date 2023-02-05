@@ -3,5 +3,6 @@
     "deno.unstable": true,
     "deno.enablePaths": [
         "./src/server"
-    ]
+    ],
+    "deno.lint": false
 }

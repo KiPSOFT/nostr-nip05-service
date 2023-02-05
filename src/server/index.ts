@@ -2,7 +2,7 @@ import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import { DB } from "./lib/db.ts";
 import { load } from "https://deno.land/std/dotenv/mod.ts";
-
+import NostrCheck from "./lib/nostr.ts";
 
 await load({
   export: true,
@@ -11,6 +11,9 @@ await load({
 
 const db = new DB();
 await db.connect();
+
+const nostr = new NostrCheck(db);
+await nostr.connect();
 
 const app = new Application();
 

@@ -23,7 +23,20 @@ export class DB {
     async getVerifiedUsers(): Promise<Array<User>> {
         return await this.db.collection('users').find({
             verified: true
+        }).toArray();
+    }
+
+    async checkUser(publicKey: string): Promise<User|null> {
+        return await this.db.collection('users').findOne({
+            publicKey,
+            verified: false
         });
+    }
+
+    async updateUser(usr: User) {
+        return await this.db.collection('users').updateOne({
+            _id: usr._id
+        }, { $set: usr });
     }
 
 }
