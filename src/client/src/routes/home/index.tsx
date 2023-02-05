@@ -27,6 +27,10 @@ const Home = () => {
 					approved after it has recognized the message you sent. Afterwards, you can enter your NIP-05 identifier
 					through any Nostr client of your choice.</li>
 			</ul>
+			<h1>Contact</h1>
+			<p>
+			If you have any questions, you can send an email to <a href="mailto:nip05@nostrprotocol.net">nip05@nostrprotocol.net</a> or 
+			send a message through nostr.</p>
 		</div>
 	);
 };

@@ -32,6 +32,9 @@ router.post('/api/register', async ({request, response}) => {
     const data = await request.body().value;
     if (!await db.findUser(data.publicKey)) {
       try {
+        if (data.name.length < 4) {
+          throw new Error('You can choose a name with at least 4 characters.');
+        }
         await db.registerUser({
           createdAt: new Date(),
           email: data.email,

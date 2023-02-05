@@ -11,7 +11,7 @@ const Register = () => {
     const [ buttonText, setButtonText ] = useState('Copy');
 
     const onSubmit = async(data) => {
-        const res = await fetch(`http://${process.env.PREACT_APP_SERVER_HOST}:${process.env.PREACT_APP_SERVER_PORT}/api/register`, {
+        const res = await fetch('/api/register', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -25,7 +25,6 @@ const Register = () => {
         } else {
             setErrMessage(json.message);
         }
-        console.log(json);
     };
 
     const handleCopyTextClick = async() => {
@@ -40,10 +39,13 @@ const Register = () => {
                 <div class={style.inputWrapper}>
                     <label for="nickname">Name</label>
                     <div>
-                        <input style={{width: '60%'}} id="name" {...register('name', { required: true })} />
+                        <input style={{width: '60%'}} id="name" {...register('name', { required: true, minLength: {
+                            value: 4,
+                            message: 'You can choose a name with at least 4 characters.'
+                        } })} />
                         <label>@nostrprotocol.net</label>
                     </div>
-                    {errors.publickey && <span class={style.error}>Name is required</span>}
+                    {errors.name && <span class={style.error}>{errors.name?.message ? errors.name?.message : 'Name is required.'}</span>}
                 </div>
                 <div class={style.inputWrapper}>
                     <label for="publickey">Public key</label>
@@ -53,7 +55,7 @@ const Register = () => {
                 <div class={style.inputWrapper}>
                     <label for="email">E-Mail</label>
                     <input id="email" type="email" {...register('email', { required: true })} />
-                    {errors.publickey && <span class={style.error}>E-mail is required</span>}
+                    {errors.email && <span class={style.error}>E-mail is required</span>}
                 </div>
                 <div class={style.inputWrapper}>
                     <button type="submit" form="register-form">Register</button>
