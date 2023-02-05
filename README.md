@@ -20,6 +20,6 @@ You can easily obtain a Nostrprotocol.net identifier for your nickname or name f
 ### Contact & Support
 Please send a mail for any question. [nip05@nostrprotocol.net](mailto:nip05@nostrprotocol.net)
 
-Please donate;  [Pay](lightning:LNURL1DP68GURN8GHJ7AMPD3KX2AR0VEEKZAR0WD5XJTNRDAKJ7TNHV4KXCTTTDEHHWM30D3H82UNVWQHH2URJD9NKSARZD9E8G6P3XUKQU268)
+Please donate; LNURL1DP68GURN8GHJ7AMPD3KX2AR0VEEKZAR0WD5XJTNRDAKJ7TNHV4KXCTTTDEHHWM30D3H82UNVWQHH2URJD9NKSARZD9E8G6P3XUKQU268
 
 Serkan KOCAMAN by KiPSOFT
