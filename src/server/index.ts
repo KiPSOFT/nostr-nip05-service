@@ -28,7 +28,9 @@ router.get("/.well-known/nostr.json", async({ response }: { response: any }) => 
     temp[usr.name] = usr.publicKey;
   }
   response.status = 200;
-  response.body = temp;
+  response.body = {
+    names: temp
+  };
 });
 
 router.post('/api/register', async ({request, response}) => {
