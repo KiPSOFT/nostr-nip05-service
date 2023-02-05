@@ -21,8 +21,9 @@ const port = parseInt(Deno.env.get('PORT') || '9080');
 
 const router = new Router();
 
-router.get("/.well-known/nostr.json", async({ response }: { response: any }) => {
-  const users = await db.getVerifiedUsers();
+router.get("/.well-known/nostr.json", async({request, response }: { request: any, response: any }) => {
+  const name = request.url.searchParams.get('name');
+  const users = await db.getVerifiedUsers(name);
   const temp: any = {};
   for (const usr of users) {
     temp[usr.name] = nostr.getKeyFromNip19(usr.publicKey);

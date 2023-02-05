@@ -20,10 +20,14 @@ export class DB {
         return await this.db.collection('users').findOne({ publicKey });
     }
 
-    async getVerifiedUsers(): Promise<Array<User>> {
-        return await this.db.collection('users').find({
+    async getVerifiedUsers(name: string): Promise<Array<User>> {
+        let search: any = {
             verified: true
-        }).toArray();
+        };
+        if (name) {
+            search.name = name;
+        }
+        return await this.db.collection('users').find(search).toArray();
     }
 
     async checkUser(publicKey: string): Promise<User|null> {
