@@ -45,7 +45,7 @@ export default class NostrCheck extends Nostr {
         const events = await this.filter(filter).collect();
         for (const evnt of events) {
             const usr = await this.db.checkUser(evnt.pubkey);
-            if (usr && evnt.content === 'Please approve my NIP-05 request on nostprotocol.net #[0]') {
+            if (usr && evnt.content === 'Please approve my NIP-05 request on https://nip05.nostprotocol.net #[0]') {
                 await this.verifyUser(evnt.pubkey, usr);
                 console.log(`${usr.name} request is approved.`);
             }

@@ -70,7 +70,7 @@ const Register = () => {
                         Copy the following text.
                         </div>
                         <textarea ref={copyTextRef} class={style.textarea} readOnly>
-                            Please approve my NIP-05 request on nostprotocol.net @npub17l9ne578dcljxmw47590knghalel5crjm449w8k4cnc2dnqcz9qq32yxme
+                            Please approve my NIP-05 request on https://nip05.nostprotocol.net @npub17l9ne578dcljxmw47590knghalel5crjm449w8k4cnc2dnqcz9qq32yxme
                         </textarea>
                         <button onClick={handleCopyTextClick}>{buttonText}</button>
                     </li>
