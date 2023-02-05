@@ -74,6 +74,7 @@ form {
 
 .error {
     color: #cf3e5b;
+    font-size: 15px;
 }
 
 .textarea {

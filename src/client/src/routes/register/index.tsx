@@ -57,10 +57,10 @@ const Register = () => {
                     <input id="email" type="email" {...register('email', { required: true })} />
                     {errors.email && <span class={style.error}>E-mail is required</span>}
                 </div>
+                {!isSuccess && errMessage && <span class={style.error}>{errMessage}</span>}
                 <div class={style.inputWrapper}>
                     <button type="submit" form="register-form">Register</button>
                 </div>
-                {!isSuccess && errMessage && <span class={style.error}>{errMessage}</span>}
             </form>}
             {isSuccess && <div style={{paddingTop: '100px', fontSize: '18px'}}>
                 <p>Congratulations, your registration has been created. What you need to do now is:</p>
