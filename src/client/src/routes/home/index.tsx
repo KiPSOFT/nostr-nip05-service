@@ -22,7 +22,7 @@ const Home = () => {
 				<li>Enter the public key value you are using on Nostr.</li>
 				<li>Choose a prefix for your identifier. For example, if you choose 'nostr', 
 					your identifier will be 'nostr@nostrprotocol.net'. You must select a minimum of 4 characters.</li>
-				<li>In this step, you need to send the text given to you through any Nostr client.</li>
+				<li>In this step, you need to send the direct message given to you through any Nostr client. You must be sent the message to wss://relay.nostrprotocol.net relay server.</li>
 				<li>The system will send you an automatic direct message confirming that the transaction has been 
 					approved after it has recognized the message you sent. Afterwards, you can enter your NIP-05 identifier
 					through any Nostr client of your choice.</li>

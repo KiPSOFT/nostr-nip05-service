@@ -11,7 +11,7 @@ export default class NostrCheck extends Nostr {
         this.db = _db;
         const server = {
             name: 'Nostrprotocol',
-            url: 'wss://relay.damus.io'
+            url: 'wss://relay.nostrprotocol.net'
         }
         this.privateKey = Deno.env.get('PRIVATE_KEY');
         this.relayList.push(server as never);
