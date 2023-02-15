@@ -20,7 +20,7 @@ export default class NostrCheck extends Nostr {
     }
 
     eventRelayConnected() {
-        console.log('Relay connected');
+        console.log('Relay connected - wss://relay.nostrprotocol.net');
         this.intervalId = setInterval(this.checkUsers.bind(this), 1000);
     }
 
