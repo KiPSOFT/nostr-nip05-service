@@ -40,7 +40,7 @@ export default class NostrCheck extends Nostr {
     async checkUsers() {
         console.log('Checking users...', Date.now());
         clearInterval(this.intervalId);
-        const since = this.getHoursAgo(1);
+        const since = this.getHoursAgo(48);
         const filter = { kinds: [1], since, '#p': [Deno.env.get('PUBLIC_KEY')] };
         const events = await this.filter(filter).collect();
         for (const evnt of events) {
