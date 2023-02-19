@@ -11,12 +11,12 @@ export default class NostrCheck extends Nostr {
         this.db = _db;
         const server = {
             name: 'Nostrprotocol',
-            url: 'wss://relay.nostrprotocol.net'
+            url: 'ws://relay.nostrprotocol.net'
         }
         this.privateKey = Deno.env.get('PRIVATE_KEY');
         this.relayList.push(server as never);
         this.on('relayConnected', this.eventRelayConnected.bind(this), null);
-        this.on('relayError', (err: Error) => console.log('Relay error;', err), null);
+        this.on('relayError', (name: string, err: Error) => console.log('Relay error;', name, err), null);
     }
 
     eventRelayConnected() {
@@ -57,7 +57,7 @@ export default class NostrCheck extends Nostr {
             const _filter = { kinds: [1], since, authors: [ usr.publicKey ] };
             const _events = await this.filter(_filter).collect();
             for (const _evnt of _events) {
-                const text = `Please approve my NIP-05 request on https://nip05.nostprotocol.net @${Deno.env.get('PUBLIC_KEY')}`;
+                const text = `Please approve my NIP-05 request on https://nip05.nostprotocol.net @${Deno.env.get('NPUBLIC_KEY')}`;
                 if (_evnt.content === text) {
                     await this.verifyUser(_evnt.pubkey, usr);
                     console.log(`${usr.name} request is approved.`);
