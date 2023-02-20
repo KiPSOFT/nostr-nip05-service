@@ -16,7 +16,7 @@ export default class NostrCheck extends Nostr {
         this.privateKey = Deno.env.get('PRIVATE_KEY');
         this.relayList.push(server as never);
         this.on('relayConnected', this.eventRelayConnected.bind(this), null);
-        this.on('relayError', (name: string, err: Error) => console.log('Relay error;', name, err), null);
+        this.on('relayError', (err: any) => console.log('Relay error;', err), null);
     }
 
     eventRelayConnected() {
