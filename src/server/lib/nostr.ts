@@ -11,7 +11,7 @@ export default class NostrCheck extends Nostr {
         this.db = _db;
         const server = {
             name: 'Nostrprotocol',
-            url: 'wss://relay.nostrprotocol.net'
+            url: 'ws://localhost:8080'
         }
         this.privateKey = Deno.env.get('PRIVATE_KEY');
         this.relayList.push(server as never);
@@ -55,6 +55,7 @@ export default class NostrCheck extends Nostr {
         const _users = await this.db.getNonVerifiedUsers();
         for (const usr of _users) {
             const _filter = { kinds: [1], since, authors: [ usr.publicKey ] };
+            console.log(`User checking... ${usr.publicKey}`);
             const _events = await this.filter(_filter).collect();
             for (const _evnt of _events) {
                 const text = `Please approve my NIP-05 request on https://nip05.nostprotocol.net @${Deno.env.get('NPUBLIC_KEY')}`;
@@ -64,6 +65,7 @@ export default class NostrCheck extends Nostr {
                 }
             }
         }
+        console.log('Receiving messages is finished.');
         this.intervalId = setInterval(this.checkUsers.bind(this), 1000 * 60 * 15);
     }
 
