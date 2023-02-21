@@ -11,12 +11,16 @@ export default class NostrCheck extends Nostr {
         this.db = _db;
         this.privateKey = Deno.env.get('PRIVATE_KEY');
         this.relayList.push({
-            name: 'Nostrprotocol',
+            name: 'Damus',
             url: 'wss://relay.damus.io'
         } as never);
         this.relayList.push({
-            name: 'Nostrprotocol',
+            name: 'Snort',
             url: 'wss://relay.snort.social'
+        } as never);
+        this.relayList.push({
+            name: 'Nostrprotocol',
+            url: 'wss://relay.nostrprotocol.net'
         } as never);
         this.on('relayConnected', this.eventRelayConnected.bind(this), null);
         this.on('relayError', (err: any) => console.log('Relay error;', err), null);
