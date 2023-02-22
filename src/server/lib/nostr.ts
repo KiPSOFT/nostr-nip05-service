@@ -19,16 +19,17 @@ export default class NostrCheck extends Nostr {
             url: 'wss://relay.snort.social'
         } as never);
         this.relayList.push({
-            name: 'Nostrprotocol',
-            url: 'wss://relay.nostrprotocol.net'
+            name: 'Wellorder',
+            url: 'wss://relay.wellorder.net'
         } as never);
         this.on('relayConnected', this.eventRelayConnected.bind(this), null);
         this.on('relayError', (err: any) => console.log('Relay error;', err), null);
     }
 
     eventRelayConnected() {
-        console.log('Relay connected - wss://relay.nostrprotocol.net');
-        this.intervalId = setInterval(this.checkUsers.bind(this), 1000);
+        if (!this.intervalId) {
+            this.intervalId = setInterval(this.checkUsers.bind(this), 1000);
+        }
     }
 
     private getHoursAgo(hours: number): number {
