@@ -74,7 +74,7 @@ const Register = () => {
                         </textarea>
                         <button onClick={handleCopyTextClick}>{buttonText}</button>
                     </li>
-                    <li>Share the copied message from a client. Recommended relay is wss://relay.nostrprotocol.net Recommended clients; <a href="https://damus.io/">Damus (IOS)</a>, <a href="https://github.com/vitorpamplona/amethyst">Amethyst (Android)</a> <a href="https://nostrgram.co/">Nostrgram (Web)</a>, <a href="https://iris.to/">iris (Web)</a></li>
+                    <li>Share the copied message from a client. Recommended clients; <a href="https://damus.io/">Damus (IOS)</a>, <a href="https://github.com/vitorpamplona/amethyst">Amethyst (Android)</a> <a href="https://nostrgram.co/">Nostrgram (Web)</a>, <a href="https://iris.to/">iris (Web)</a></li>
                     <li>Your request will be approved within 30 minutes and you will be notified with a direct message.</li>
                 </ul>
                 <p>Points to remember:</p>
