@@ -68,6 +68,7 @@ export default class NostrCheck extends Nostr {
             const _events = await this.filter(_filter).collect();
             for (const _evnt of _events) {
                 const text = `Please approve my NIP-05 request on https://nip05.nostprotocol.net @${Deno.env.get('NPUBLIC_KEY')}`;
+                console.log('Content checking...', _evnt.content);
                 if (_evnt.content === text) {
                     await this.verifyUser(_evnt.pubkey, usr);
                     console.log(`${usr.name} request is approved.`);
