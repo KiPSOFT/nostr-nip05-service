@@ -27,6 +27,7 @@ export default class NostrCheck extends Nostr {
     }
 
     eventRelayConnected() {
+        console.log('Relay connected.');
         if (!this.intervalId) {
             this.intervalId = setInterval(this.checkUsers.bind(this), 1000);
         }
