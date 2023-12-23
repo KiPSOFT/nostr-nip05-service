@@ -32,7 +32,7 @@ export class DB {
     if (name) {
       search.name = name;
     }
-    return await this.db.collection("users").aggregate(search).toArray();
+    return await this.db.collection("users").find(search).toArray();
   }
 
   async getNonVerifiedUsers(): Promise<Array<User>> {
