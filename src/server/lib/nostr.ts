@@ -47,36 +47,40 @@ export default class NostrCheck extends Nostr {
     }
 
     async checkUsers() {
-        clearInterval(this.intervalId);
-        const since = this.getHoursAgo(48);
-        console.log('Checking users...', Date.now(), since);
-        const filter = { kinds: [1], since, '#p': [Deno.env.get('PUBLIC_KEY')] };
-        const events = await this.filter(filter).collect();
-        console.log('Events ...', events);
-        for (const evnt of events) {
-            const usr = await this.db.checkUser(evnt.pubkey);
-            if (usr && evnt.content === 'Please approve my NIP-05 request on https://nip05.nostprotocol.net #[0]') {
-                await this.verifyUser(evnt.pubkey, usr);
-                console.log(`${usr.name} request is approved.`);
-            }
-        }
-        console.log('Receiving messages sent with "nostr" clients that do not support mention feature...')
-        const _users = await this.db.getNonVerifiedUsers();
-        for (const usr of _users) {
-            const _filter = { kinds: [1], since, authors: [ usr.publicKey ] };
-            console.log(`User checking... ${usr.publicKey}`);
-            const _events = await this.filter(_filter).collect();
-            for (const _evnt of _events) {
-                const text = `Please approve my NIP-05 request on https://nip05.nostprotocol.net @${Deno.env.get('NPUBLIC_KEY')}`;
-                console.log('Content checking...', _evnt.content);
-                if (_evnt.content === text) {
-                    await this.verifyUser(_evnt.pubkey, usr);
+        try {
+            clearInterval(this.intervalId);
+            const since = this.getHoursAgo(48);
+            console.log('Checking users...', Date.now(), since);
+            const filter = { kinds: [1], since, '#p': [Deno.env.get('PUBLIC_KEY')] };
+            const events = await this.filter(filter).collect();
+            console.log('Events ...', events);
+            for (const evnt of events) {
+                const usr = await this.db.checkUser(evnt.pubkey);
+                if (usr && evnt.content === 'Please approve my NIP-05 request on https://nip05.nostprotocol.net #[0]') {
+                    await this.verifyUser(evnt.pubkey, usr);
                     console.log(`${usr.name} request is approved.`);
                 }
             }
+            console.log('Receiving messages sent with "nostr" clients that do not support mention feature...')
+            const _users = await this.db.getNonVerifiedUsers();
+            for (const usr of _users) {
+                const _filter = { kinds: [1], since, authors: [ usr.publicKey ] };
+                console.log(`User checking... ${usr.publicKey}`);
+                const _events = await this.filter(_filter).collect();
+                for (const _evnt of _events) {
+                    const text = `Please approve my NIP-05 request on https://nip05.nostprotocol.net @${Deno.env.get('NPUBLIC_KEY')}`;
+                    console.log('Content checking...', _evnt.content);
+                    if (_evnt.content === text) {
+                        await this.verifyUser(_evnt.pubkey, usr);
+                        console.log(`${usr.name} request is approved.`);
+                    }
+                }
+            }
+            console.log('Receiving messages is finished.');
+            this.intervalId = setInterval(this.checkUsers.bind(this), 1000 * 60 * 15);
+        } catch (err) {
+            console.error('checkUsers error;', err);
         }
-        console.log('Receiving messages is finished.');
-        this.intervalId = setInterval(this.checkUsers.bind(this), 1000 * 60 * 15);
     }
 
 }
